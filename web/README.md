@@ -40,9 +40,10 @@ NEXT_PUBLIC_PUBLIC_API_PREFIX=http://localhost:5001/api
 NEXT_PUBLIC_SENTRY_DSN=
 ```
 
-Finally, run the development server:
+Finally, run the development server (using admin permission if encountering permission error):
 
 ```bash
+
 pnpm run dev
 ```
 

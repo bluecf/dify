@@ -37,7 +37,16 @@
    sed -i '' "/^SECRET_KEY=/c\\
    SECRET_KEY=${secret_key}" .env
    ```
-
+   Windows PowerShell
+   ```powershell
+   $secret_key = [Convert]::ToBase64String([System.Security.Cryptography.RandomNumberGenerator]::GetBytes(32))
+   (Get-Content .env) -replace '^SECRET_KEY=.*', "SECRET_KEY=$secret_key" | Set-Content .env
+   ```
+   Git Bash for Windows
+   ```bash
+   secret_key=$(openssl rand -base64 42)
+   sed -i "/^SECRET_KEY=/c\\SECRET_KEY=${secret_key}" .env
+   ```
 4. Create environment.
 
    Dify API service uses [UV](https://docs.astral.sh/uv/) to manage dependencies.
